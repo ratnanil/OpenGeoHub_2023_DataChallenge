@@ -17,10 +17,21 @@ An entry in the tick diary allows the app to automatically remind the user to ch
 
 The app "tick" is available  for free for iOS- and Android-smartphones and -tablets.
 
-![](spatial_accuracy.jpg)
-![](unnamed-chunk-26-1.png)
+|   |   |
+:-------------------------:|:-------------------------:
+![](spatial_accuracy.jpg)  | ![](unnamed-chunk-26-1.png)
 
 
-![Count of Tickbites per 30 Days. The first tick bites were recorded in early 2015 and the latest beginning of 2020.](unnamed-chunk-37-1.png)
-![Most Tick bites are recorded May to July, with the peak being in June. ](unnamed-chunk-38-1.png)
-![Most tick bites are recorded between 20h and 22h. This is probably the instance when tick bites are noticed (e.g. in the shower). ](unnamed-chunk-39-1.png)
+|  |   |
+:-------------------------:|:-------------------------:
+![](unnamed-chunk-37-1.png) | ![](unnamed-chunk-38-1.png)
+| Count of Tickbites per 30 Days. The first tick bites were recorded in early 2015 and the latest beginning of 2020. | Most Tick bites are recorded May to July, with the peak being in June. 
+
+
+
+|  |   |
+:-------------------------:|:-------------------------:
+| ![](unnamed-chunk-39-1.png) | ![](unnamed-chunk-14-1.png)
+| Most tick bites are recorded between 20h and 22h. This is probably the instance when tick bites are noticed (e.g. in the shower). | After filtering, the dataset consists of 30’192 tick bite recordings.
+
+
