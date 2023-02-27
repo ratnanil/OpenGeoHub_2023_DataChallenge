@@ -17,9 +17,9 @@ An entry in the tick diary allows the app to automatically remind the user to ch
 
 The app "tick" is available  for free for iOS- and Android-smartphones and -tablets.
 
-|   |   |
+<!-- |   |   |
 :-------------------------:|:-------------------------:
-![](spatial_accuracy.jpg)  | ![](unnamed-chunk-26-1.png)
+![](unnamed-chunk-26-1.png) -->
 
 
 |  |   |
