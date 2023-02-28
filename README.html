@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>readme</title>
+<title>OpenGeoHub 2023 DataChallenge</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -34,6 +34,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="README_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -43,62 +44,132 @@ ul.task-list li input[type="checkbox"] {
 
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">OpenGeoHub 2023 DataChallenge</h1>
+<p class="subtitle lead">A proposal für the <em>OpenGeoHub Summerschool 2023</em> Data Challenge</p>
+</div>
 
 
-<section id="opengeohub-2023-datachallenge" class="level1">
-<h1>OpenGeoHub 2023 DataChallenge</h1>
-<p>A proposal für the <em>OpenGeoHub Summerschool 2023</em> Data Challenge</p>
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
-<p>The tick prevention app “tick” is a mobile application that provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of the tick bite on a map, thus helping to identify tick hotspots. More information can be found <a href="https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&amp;cHash=a51a3a438004a34df53e9a544e4b070b">here</a>.</p>
-<p>In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location.</p>
+<p>The tick prevention app “tick” is a mobile application that provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found <a href="https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&amp;cHash=a51a3a438004a34df53e9a544e4b070b">here</a>.</p>
+<p>In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms <a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bag.zeckenstichmodell&amp;E=2673880.30&amp;N=1214206.44&amp;zoom=8&amp;layers_opacity=0.75">the existing expert based model</a>.</p>
 </section>
-<section id="tick-prevention-with-your-smartphone" class="level2">
-<h2 class="anchored" data-anchor-id="tick-prevention-with-your-smartphone">Tick prevention with your smartphone</h2>
+<section id="the-app" class="level2">
+<h2 class="anchored" data-anchor-id="the-app">The App</h2>
 <p>The tick-app consists of a warning and an information section, showing the correct procedure to follow after a tick bite. The warning function displays the current tick-risk in an area. The dynamic warnings uses the five-stage tick bite risk scale to indicate the tick risk during outdoor activities. The information section shows you how to protect yourself from ticks.</p>
 <p>An entry in the tick diary allows the app to automatically remind the user to check the location on their body of the tick bite for possible disease symptoms. If there is suspicion of a tick-borne disease, users are recommended to seek a doctor’s advice.</p>
-<p>The app “tick” is available for free for iOS- and Android-smartphones and -tablets.</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="spatial_accuracy.jpg" class="img-fluid"></td>
-<td style="text-align: center;"><img src="unnamed-chunk-26-1.png" class="img-fluid"></td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="unnamed-chunk-37-1.png" class="img-fluid"></td>
-<td style="text-align: center;"><img src="unnamed-chunk-38-1.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Count of Tickbites per 30 Days. The first tick bites were recorded in early 2015 and the latest beginning of 2020.</td>
-<td style="text-align: center;">Most Tick bites are recorded May to July, with the peak being in June.</td>
-</tr>
-</tbody>
-</table>
-<table class="table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><img src="unnamed-chunk-39-1.png" class="img-fluid"></td>
-<td style="text-align: center;"><img src="unnamed-chunk-14-1.png" class="img-fluid"></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">Most tick bites are recorded between 20h and 22h. This is probably the instance when tick bites are noticed (e.g.&nbsp;in the shower).</td>
-<td style="text-align: center;">After filtering, the dataset consists of 30’192 tick bite recordings.</td>
-</tr>
-</tbody>
-</table>
 </section>
+<section id="dependent-variable-tick-data" class="level2">
+<h2 class="anchored" data-anchor-id="dependent-variable-tick-data">Dependent variable: Tick data</h2>
+<section id="temporal-dimension" class="level3">
+<h3 class="anchored" data-anchor-id="temporal-dimension">Temporal dimension</h3>
+<p>Every year, the number of users using the app continues to grow and thus the number of recorded tick bites grows rapidly. Here are some figures showing the data from 2015 to 2019. More recent data can be aquired easily.</p>
+<!-- ![](images/unnamed-chunk-37-1.png){#fig-yearly} -->
+<div id="fig-temporal" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-yearly2" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/unnamed-chunk-38-1.png" class="img-fluid figure-img" data-ref-parent="fig-temporal"></p>
+<p></p><figcaption class="figure-caption">(a)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-timeofday" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/unnamed-chunk-39-1.png" class="img-fluid figure-img" data-ref-parent="fig-temporal"></p>
+<p></p><figcaption class="figure-caption">(b)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: The first tick bites were recorded in early 2015 and the latest beginning of 2020, more recent data is available. Most Tick bites are recorded May to July, with the peak being in June. Most tick bites are recorded between 20h and 22h. This is probably the instance when tick bites are noticed (e.g.&nbsp;in the shower).</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="spatial-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-accuracy">Spatial accuracy</h3>
+<p>When specifying the location where the tick bite occured, the user has the possibility to zoom into the map very closely (see <a href="#fig-zoom">Figure&nbsp;2 (a)</a>). The higher the zoom level the user chooses, the smaller the radius of the red circle. This radius can be used as a proxy of the accuracy of the users knowledge of where the tick bite occured. The distribution of the accuracies are approximately log normally distributed, see <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>. Different versions of the app have different default values for accuracy. These default values are the peaks visible in <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>.</p>
+<div id="fig-spat" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 30.0%;justify-content: center;">
+<div id="fig-zoom" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/spatial_accuracy.jpg" class="img-fluid figure-img" data-ref-parent="fig-spat"></p>
+<p></p><figcaption class="figure-caption">(a)</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 70.0%;justify-content: center;">
+<div id="fig-accuracy" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/unnamed-chunk-26-1.png" class="img-fluid figure-img" data-ref-parent="fig-spat"></p>
+<p></p><figcaption class="figure-caption">(b)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Accuracy of the tick bite locations can be inferred from the size of the radius the user provided when recording the tick bite.</figcaption><p></p>
+</figure>
+</div>
+</section>
+<section id="risk-hazard-and-exposure" class="level3">
+<h3 class="anchored" data-anchor-id="risk-hazard-and-exposure">Risk, hazard and exposure</h3>
+<p>The risk of getting bitten by a tick can be formalized as follows:</p>
+<p><span class="math display">\[\text{Risk} = \text{Hazard} \times \text{Exposure}\]</span></p>
+<p>This means that the risk is higher for areas not only where the <em>Hazard</em> is higher (i.e.&nbsp;more ticks), but also where <em>Exposure</em> is higher, i.e.&nbsp;more people. In other words, we must correct our data for population before making any predictions about the occurance of ticks, as <a href="#fig-spatial">Figure&nbsp;3</a> shows. If you are not familiar with swiss geography, the hotspots of tick bites are clearly around major cities like Zurich, Bern etc.</p>
+<div id="fig-spatial" class="quarto-layout-panel">
+<figure class="figure">
+<div class="quarto-layout-row quarto-layout-valign-top">
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-spatial-raw" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/unnamed-chunk-14-1.png" class="img-fluid figure-img" data-ref-parent="fig-spatial"></p>
+<p></p><figcaption class="figure-caption">(a) Raw data points</figcaption><p></p>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell quarto-layout-cell-subref" style="flex-basis: 50.0%;justify-content: center;">
+<div id="fig-spatial-kde" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/unnamed-chunk-15-2.png" class="img-fluid figure-img" data-ref-parent="fig-spatial"></p>
+<p></p><figcaption class="figure-caption">(b) Point density (5km kernel filter)</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: After filtering, the dataset consists of &gt; 30k tick bite recordings. Naturally, we have most recordings around big cities</figcaption><p></p>
+</figure>
+</div>
+</section>
+</section>
+<section id="predictors-geodata" class="level2">
+<h2 class="anchored" data-anchor-id="predictors-geodata">Predictors: Geodata</h2>
+<p>Based on expert knowledge, we have selected and prepared a number of possible datasets that can be used to predict tick occurance.</p>
+<ul>
+<li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bfs.arealstatistik&amp;layers_opacity=0.75&amp;layers_timestamp=2018">Land use statistics</a>: A raster dataset with a 100m resolution with 72 basic categories</li>
+<li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner&amp;layers_timestamp=2021&amp;E=2677260.22&amp;N=1214005.67&amp;zoom=10">Population</a>: A raster dataset with 100m resolution with population count</li>
+<li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bafu.landesforstinventar-vegetationshoehenmodell&amp;E=2673314.45&amp;N=1210711.46&amp;zoom=5&amp;layers_opacity=0.5">Vegetation Height</a>: A raster dataset with 50cm resolution describing the height of the vegetation in meters.</li>
+<li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.swisstopo.swissalti3d-reliefschattierung_monodirektional&amp;E=2674016.86&amp;N=1214686.09&amp;zoom=11">Digital Elevation Model</a>: A raster dataset with 50cm resolution describing elevation</li>
+<li>Temperature: Historic temperature values</li>
+<li>Percipitation: Historic percipitation values</li>
+</ul>
 </section>
 
 </main>
