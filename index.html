@@ -23,16 +23,16 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="README_files/libs/clipboard/clipboard.min.js"></script>
-<script src="README_files/libs/quarto-html/quarto.js"></script>
-<script src="README_files/libs/quarto-html/popper.min.js"></script>
-<script src="README_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="README_files/libs/quarto-html/anchor.min.js"></script>
-<link href="README_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="README_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="README_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="README_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="README_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -65,18 +65,23 @@ ul.task-list li input[type="checkbox"] {
 <section id="abstract" class="level2">
 <h2 class="anchored" data-anchor-id="abstract">Abstract</h2>
 <p>The tick prevention app “tick” is a mobile application that provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found <a href="https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&amp;cHash=a51a3a438004a34df53e9a544e4b070b">here</a>.</p>
-<p>In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms <a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bag.zeckenstichmodell&amp;E=2673880.30&amp;N=1214206.44&amp;zoom=8&amp;layers_opacity=0.75">the existing expert based model</a>.</p>
+<p>In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create a model which outperforms <a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bag.zeckenstichmodell&amp;E=2673880.30&amp;N=1214206.44&amp;zoom=8&amp;layers_opacity=0.75">the existing expert-based model</a>.</p>
 </section>
-<section id="the-app" class="level2">
-<h2 class="anchored" data-anchor-id="the-app">The App</h2>
-<p>The tick-app consists of a warning and an information section, showing the correct procedure to follow after a tick bite. The warning function displays the current tick-risk in an area. The dynamic warnings uses the five-stage tick bite risk scale to indicate the tick risk during outdoor activities. The information section shows you how to protect yourself from ticks.</p>
-<p>An entry in the tick diary allows the app to automatically remind the user to check the location on their body of the tick bite for possible disease symptoms. If there is suspicion of a tick-borne disease, users are recommended to seek a doctor’s advice.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Ticks are small arachnids that feed on the blood of mammals, birds and reptiles. Ticks are vectors for several diseases, including Lyme disease, tick-borne encephalitis, babesiosis and anaplasmosis. In Switzerland, tick bites are a common phenomenon. In 2019, 3.1% of the population was infected with Lyme disease. The tick prevention app “tick” was developed by the Institute for Natural Resource Sciences of the Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) in 2015. The app is available for android and ios and provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found <a href="https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&amp;cHash=a51a3a438004a34df53e9a544e4b070b">here</a>.</p>
+<p>In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms <a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bag.zeckenstichmodell&amp;E=2673880.30&amp;N=1214206.44&amp;zoom=8&amp;layers_opacity=0.75">the existing expert-based model</a>.</p>
+<p>For this, we have the following data available:</p>
+<ul>
+<li><strong>Dependent variable</strong>: Tick bite data (tick bites recorded by users of the tick app)</li>
+<li><strong>Predictors</strong>: Geodata (raster data from various sources)</li>
+</ul>
 </section>
 <section id="dependent-variable-tick-data" class="level2">
 <h2 class="anchored" data-anchor-id="dependent-variable-tick-data">Dependent variable: Tick data</h2>
 <section id="temporal-dimension" class="level3">
 <h3 class="anchored" data-anchor-id="temporal-dimension">Temporal dimension</h3>
-<p>Every year, the number of users using the app continues to grow and thus the number of recorded tick bites grows rapidly. Here are some figures showing the data from 2015 to 2019. More recent data can be aquired easily.</p>
+<p>Every year, the number of users using the app continues to grow and thus the number of recorded tick bites grows rapidly. Here are some figures showing the data from 2015 to 2019. More recent data can be acquired easily.</p>
 <!-- ![](images/unnamed-chunk-37-1.png){#fig-yearly} -->
 <div id="fig-temporal" class="quarto-layout-panel">
 <figure class="figure">
@@ -104,7 +109,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="spatial-accuracy" class="level3">
 <h3 class="anchored" data-anchor-id="spatial-accuracy">Spatial accuracy</h3>
-<p>When specifying the location where the tick bite occured, the user has the possibility to zoom into the map very closely (see <a href="#fig-zoom">Figure&nbsp;2 (a)</a>). The higher the zoom level the user chooses, the smaller the radius of the red circle. This radius can be used as a proxy of the accuracy of the users knowledge of where the tick bite occured. The distribution of the accuracies are approximately log normally distributed, see <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>. Different versions of the app have different default values for accuracy. These default values are the peaks visible in <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>.</p>
+<p>When specifying the location where the tick bite occurred, the user has the possibility to zoom into the map very closely (see <a href="#fig-zoom">Figure&nbsp;2 (a)</a>). The higher the zoom level the user chooses, the smaller the radius of the red circle. This radius can be used as a proxy of the accuracy of the user’s knowledge of where the tick bite occurred. The distribution of the accuracies is approximately log normal, see <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>. Different versions of the app have different default values for accuracy. These default values are the peaks visible in <a href="#fig-accuracy">Figure&nbsp;2 (b)</a>.</p>
 <div id="fig-spat" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -133,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
 <h3 class="anchored" data-anchor-id="risk-hazard-and-exposure">Risk, hazard and exposure</h3>
 <p>The risk of getting bitten by a tick can be formalized as follows:</p>
 <p><span class="math display">\[\text{Risk} = \text{Hazard} \times \text{Exposure}\]</span></p>
-<p>This means that the risk is higher for areas not only where the <em>Hazard</em> is higher (i.e.&nbsp;more ticks), but also where <em>Exposure</em> is higher, i.e.&nbsp;more people. In other words, we must correct our data for population before making any predictions about the occurance of ticks, as <a href="#fig-spatial">Figure&nbsp;3</a> shows. If you are not familiar with swiss geography, the hotspots of tick bites are clearly around major cities like Zurich, Bern etc.</p>
+<p>This means that the risk is higher for areas not only where the <em>Hazard</em> is higher (i.e.&nbsp;more ticks), but also where <em>Exposure</em> is higher, i.e.&nbsp;more people. In other words, we must correct our data for population before making any predictions about the occurrence of ticks, as <a href="#fig-spatial">Figure&nbsp;3</a> shows. If you are not familiar with swiss geography, the hotspots of tick bites are clearly around major cities like Zurich, Bern etc.</p>
 <div id="fig-spatial" class="quarto-layout-panel">
 <figure class="figure">
 <div class="quarto-layout-row quarto-layout-valign-top">
@@ -161,15 +166,14 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="predictors-geodata" class="level2">
 <h2 class="anchored" data-anchor-id="predictors-geodata">Predictors: Geodata</h2>
-<p>Based on expert knowledge, we have selected and prepared a number of possible datasets that can be used to predict tick occurance.</p>
+<p>Based on expert knowledge, we have selected and prepared a number of possible datasets that can be used to predict tick occurrence.</p>
 <ul>
 <li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bfs.arealstatistik&amp;layers_opacity=0.75&amp;layers_timestamp=2018">Land use statistics</a>: A raster dataset with a 100m resolution with 72 basic categories</li>
 <li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner&amp;layers_timestamp=2021&amp;E=2677260.22&amp;N=1214005.67&amp;zoom=10">Population</a>: A raster dataset with 100m resolution with population count</li>
 <li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.bafu.landesforstinventar-vegetationshoehenmodell&amp;E=2673314.45&amp;N=1210711.46&amp;zoom=5&amp;layers_opacity=0.5">Vegetation Height</a>: A raster dataset with 50cm resolution describing the height of the vegetation in meters.</li>
 <li><a href="https://map.geo.admin.ch/?lang=en&amp;topic=ech&amp;bgLayer=ch.swisstopo.pixelkarte-farbe&amp;layers=ch.swisstopo.swissalti3d-reliefschattierung_monodirektional&amp;E=2674016.86&amp;N=1214686.09&amp;zoom=11">Digital Elevation Model</a>: A raster dataset with 50cm resolution describing elevation</li>
-<li>Temperature: Historic temperature values</li>
-<li>Percipitation: Historic percipitation values</li>
 </ul>
+<p>As an extra challenge, participants could use historic temperature and precipitation data to create a dynamic, spatiotemporal forecast model. Historic weather data is available on various temporal scales (daily, weeekly, mothly…) at a high sptial resolution.</p>
 </section>
 
 </main>

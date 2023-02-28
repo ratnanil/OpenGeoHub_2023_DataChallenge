@@ -1,7 +1,6 @@
 ---
 title: OpenGeoHub 2023 DataChallenge
 subtitle: A proposal für the *OpenGeoHub Summerschool 2023* Data Challenge
-format: gfm
 ---
 
 
@@ -10,36 +9,25 @@ format: gfm
 
 The tick prevention app "tick" is a mobile application that provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found [here](https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&cHash=a51a3a438004a34df53e9a544e4b070b).
 
-In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms [the existing expert based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
+In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create a model which outperforms [the existing expert-based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
+
 
 ## Introduction
 
 Ticks are small arachnids that feed on the blood of mammals, birds and reptiles. Ticks are vectors for several diseases, including Lyme disease, tick-borne encephalitis, babesiosis and anaplasmosis. In Switzerland, tick bites are a common phenomenon. In 2019, 3.1% of the population was infected with Lyme disease. The tick prevention app "tick" was developed by the Institute for Natural Resource Sciences of the Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) in 2015. The app is available for android and ios and provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found [here](https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&cHash=a51a3a438004a34df53e9a544e4b070b).
 
-In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms [the existing expert based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
+In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms [the existing expert-based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
 
 For this, we have the following data available:
 
 - **Dependent variable**: Tick bite data (tick bites recorded by users of the tick app)
 - **Predictors**: Geodata (raster data from various sources)
 
-### Dependent variable: Tick data
-
-The dependent variable is the number of tick bites recorded by users of the tick app. The data is available in the form of a CSV
-
-
-## The App
-
-The tick-app consists of a warning and an information section, showing the correct procedure to follow after a tick bite. The warning function displays the current tick-risk in an area. The dynamic warnings uses the five-stage tick bite risk scale to indicate the tick risk during outdoor activities. The information section shows you how to protect yourself from ticks.
-
-An entry in the tick diary allows the app to automatically remind the user to check the location on their body of the tick bite for possible disease symptoms. If there is suspicion of a tick-borne disease, users are recommended to seek a doctor's advice.
-
-
 ## Dependent variable: Tick data
 
 ### Temporal dimension
 
-Every year, the number of users using the app continues to grow and thus the number of recorded tick bites grows rapidly. Here are some figures showing the data from 2015 to 2019. More recent data can be aquired easily.
+Every year, the number of users using the app continues to grow and thus the number of recorded tick bites grows rapidly. Here are some figures showing the data from 2015 to 2019. More recent data can be acquired easily.
 
 
 <!-- ![](images/unnamed-chunk-37-1.png){#fig-yearly} -->
@@ -61,7 +49,7 @@ Most tick bites are recorded between 20h and 22h. This is probably the instance 
 
 ### Spatial accuracy
 
-When specifying the location where the tick bite occured, the user has the possibility to zoom into the map very closely (see @fig-zoom). The higher the zoom level the user chooses, the smaller the radius of the red circle. This radius can be used as a proxy of the accuracy of the users knowledge of where the tick bite occured. The distribution of the accuracies are approximately log normally distributed, see @fig-accuracy. Different versions of the app have different default values for accuracy. These default values are the peaks visible in @fig-accuracy.
+When specifying the location where the tick bite occurred, the user has the possibility to zoom into the map very closely (see @fig-zoom). The higher the zoom level the user chooses, the smaller the radius of the red circle. This radius can be used as a proxy of the accuracy of the user's knowledge of where the tick bite occurred. The distribution of the accuracies is approximately log normal, see @fig-accuracy. Different versions of the app have different default values for accuracy. These default values are the peaks visible in @fig-accuracy.
 
 
 
@@ -85,7 +73,7 @@ The risk of getting bitten by a tick can be formalized as follows:
 $$\text{Risk} = \text{Hazard} \times \text{Exposure}$$
 
 
-This means that the risk is higher for areas not only where the *Hazard* is higher (i.e. more ticks), but also where *Exposure* is higher, i.e. more people. In other words, we must correct our data for population before making any predictions about the occurance of ticks, as @fig-spatial shows. If you are not familiar with swiss geography, the hotspots of tick bites are clearly around major cities like Zurich, Bern etc. 
+This means that the risk is higher for areas not only where the *Hazard* is higher (i.e. more ticks), but also where *Exposure* is higher, i.e. more people. In other words, we must correct our data for population before making any predictions about the occurrence of ticks, as @fig-spatial shows. If you are not familiar with swiss geography, the hotspots of tick bites are clearly around major cities like Zurich, Bern etc. 
 
 
 :::{#fig-spatial layout-nrow=1}
@@ -102,7 +90,7 @@ After filtering, the dataset consists of > 30k tick bite recordings. Naturally, 
 
 ## Predictors: Geodata
 
-Based on expert knowledge, we have selected and prepared a number of possible datasets that can be used to predict tick occurance. 
+Based on expert knowledge, we have selected and prepared a number of possible datasets that can be used to predict tick occurrence. 
 
 - [Land use statistics](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bfs.arealstatistik&layers_opacity=0.75&layers_timestamp=2018): A raster dataset with a 100m resolution with 72 basic categories
 - [Population](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner&layers_timestamp=2021&E=2677260.22&N=1214005.67&zoom=10): A raster dataset with 100m resolution with population count
@@ -110,5 +98,4 @@ Based on expert knowledge, we have selected and prepared a number of possible da
 - [Digital Elevation Model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.swisstopo.swissalti3d-reliefschattierung_monodirektional&E=2674016.86&N=1214686.09&zoom=11): A raster dataset with 50cm resolution describing elevation
 
 
-
-As an extra challenge, participents could use historic temperature and percipitation data to create a dynamic, spatiotemporal forecast model.
+As an extra challenge, participants could use historic temperature and precipitation data to create a dynamic, spatiotemporal forecast model. Historic weather data is available on various temporal scales (daily, weeekly, mothly...) at a high sptial resolution. 
