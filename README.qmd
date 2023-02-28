@@ -12,6 +12,21 @@ The tick prevention app "tick" is a mobile application that provides information
 
 In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms [the existing expert based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
 
+## Introduction
+
+Ticks are small arachnids that feed on the blood of mammals, birds and reptiles. Ticks are vectors for several diseases, including Lyme disease, tick-borne encephalitis, babesiosis and anaplasmosis. In Switzerland, tick bites are a common phenomenon. In 2019, 3.1% of the population was infected with Lyme disease. The tick prevention app "tick" was developed by the Institute for Natural Resource Sciences of the Zürcher Hochschule für Angewandte Wissenschaften (ZHAW) in 2015. The app is available for android and ios and provides information on tick prevention and tick bite risk. The user is able to enter tick bites in a diary and is reminded to check for possible disease symptoms. Additionally, the user can enter the location of where the tick bite took place on a map, thus helping to identify tick hotspots. More information can be found [here](https://www.zhaw.ch/en/lsfm/business-services/natural-resource-sciences/ticks/tick-app/?mdrv=www.zhaw.ch&cHash=a51a3a438004a34df53e9a544e4b070b).
+
+In this manner, over 50k tick bites were collected over a period of several years. This data can be used to identify tick hotspots and to predict tick bite risk based on environmental factors. We have a list of variables that experts think are important for predicting tick bite risk. We want to use machine learning to find out which variables are actually important and to predict tick bite risk for a given location. The goal is to create model which outperforms [the existing expert based model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bag.zeckenstichmodell&E=2673880.30&N=1214206.44&zoom=8&layers_opacity=0.75).
+
+For this, we have the following data available:
+
+- **Dependent variable**: Tick bite data (tick bites recorded by users of the tick app)
+- **Predictors**: Geodata (raster data from various sources)
+
+### Dependent variable: Tick data
+
+The dependent variable is the number of tick bites recorded by users of the tick app. The data is available in the form of a CSV
+
 
 ## The App
 
@@ -93,5 +108,7 @@ Based on expert knowledge, we have selected and prepared a number of possible da
 - [Population](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bfs.volkszaehlung-bevoelkerungsstatistik_einwohner&layers_timestamp=2021&E=2677260.22&N=1214005.67&zoom=10): A raster dataset with 100m resolution with population count
 - [Vegetation Height](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.bafu.landesforstinventar-vegetationshoehenmodell&E=2673314.45&N=1210711.46&zoom=5&layers_opacity=0.5): A raster dataset with 50cm resolution describing the height of the vegetation in meters.
 - [Digital Elevation Model](https://map.geo.admin.ch/?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.swisstopo.swissalti3d-reliefschattierung_monodirektional&E=2674016.86&N=1214686.09&zoom=11): A raster dataset with 50cm resolution describing elevation
-- Temperature: Historic temperature values 
-- Percipitation: Historic percipitation values
+
+
+
+As an extra challenge, participents could use historic temperature and percipitation data to create a dynamic, spatiotemporal forecast model.
